@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:meuincoterm2020/widgets/main_button.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -14,7 +12,7 @@ class WelcomeScreen extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(30.0),
                 child: Column(
                   children: [
                     const SizedBox(
@@ -25,21 +23,13 @@ class WelcomeScreen extends StatelessWidget {
                       height: 100,
                     ),
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      // ignore: prefer_const_literals_to_create_immutables
                       children: [
-                        TextButton(
-                          style: TextButton.styleFrom(
-                            textStyle: const TextStyle(
-                              fontSize: 20,
-                            ),
-                            padding: const EdgeInsets.all(16.0),
-                            primary: Colors.black,
-                            backgroundColor:
-                                const Color.fromARGB(255, 252, 192, 13),
-                          ),
-                          onPressed: () {},
-                          child: const Text("Vamos Começar!"),
-                        ),
+                        const MainButton(text: "Vamos Começar?"),
+                        const Spacer(),
+                        const MainButton(text: "B"),
+                        const Spacer(),
+                        const MainButton(text: "C"),
                       ],
                     ),
                   ],
