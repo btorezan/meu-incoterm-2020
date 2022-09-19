@@ -7,38 +7,20 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(children: [
-        SafeArea(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(30.0),
-                child: Column(
-                  children: [
-                    const SizedBox(
-                      height: 40,
-                    ),
-                    Image.asset('assets/images/logo.png'),
-                    const SizedBox(
-                      height: 100,
-                    ),
-                    Column(
-                      // ignore: prefer_const_literals_to_create_immutables
-                      children: [
-                        const MainButton(text: "Vamos Começar?"),
-                        const Spacer(),
-                        const MainButton(text: "B"),
-                        const Spacer(),
-                        const MainButton(text: "C"),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Image.asset("assets/images/logo.png"),
+          Column(
+            mainAxisSize: MainAxisSize.max,
+            children: const <Widget>[
+              MainButton(text: "Vamos Começar?", route: "/question"),
+              MainButton(text: "Sobre os INCOTERMs 2020", route: "/faq"),
+              MainButton(text: "Sobre nós", route: "/about"),
             ],
           ),
-        )
-      ]),
+        ],
+      ),
     );
   }
 }
