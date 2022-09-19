@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:meuincoterm2020/models/incoterm.dart';
 
 class ResultScreen extends StatefulWidget {
-  Incoterm incoterm;
+  final Incoterm incoterm;
 
-  ResultScreen({Key? key, required this.incoterm}) : super(key: key);
+  const ResultScreen({Key? key, required this.incoterm}) : super(key: key);
 
   @override
   State<ResultScreen> createState() => _ResultScreenState();
@@ -21,10 +21,10 @@ class _ResultScreenState extends State<ResultScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           // ignore: prefer_const_literals_to_create_immutables
           children: [
-            Text(
+            const Text(
               "PARABÉNS!\nSeu INCOTERM é\n",
               textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.amber),
+              style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.amber),
             ),
             Text(
               widget.incoterm.abbreviation,
@@ -36,7 +36,7 @@ class _ResultScreenState extends State<ResultScreen> {
             ),
             Text(
               widget.incoterm.internationalName,
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.amber),
+              style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.amber),
             ),
             // ignore: prefer_const_constructors
             SizedBox(
@@ -52,7 +52,7 @@ class _ResultScreenState extends State<ResultScreen> {
                 padding: const EdgeInsets.all(20.0),
                 child: Text(
                   widget.incoterm.brazilianName,
-                  style: TextStyle(color: Colors.white, fontSize: 20),
+                  style: const TextStyle(color: Colors.white, fontSize: 20),
                 ),
               ),
             ),
