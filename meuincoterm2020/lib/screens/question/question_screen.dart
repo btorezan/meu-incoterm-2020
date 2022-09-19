@@ -1,14 +1,48 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:meuincoterm2020/controllers/incoterms_controller.dart';
+import 'package:meuincoterm2020/controllers/question_controller.dart';
+import 'package:meuincoterm2020/models/incoterm.dart';
+import 'package:meuincoterm2020/models/question.dart';
+import 'package:meuincoterm2020/screens/result/result.dart';
 import 'package:meuincoterm2020/widgets/question_modal.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'dart:developer' as developer;
 
-class QuestionScreen extends StatelessWidget {
+class QuestionScreen extends StatefulWidget {
   const QuestionScreen({Key? key}) : super(key: key);
 
   @override
+  State<QuestionScreen> createState() => _QuestionScreenState();
+}
+
+class _QuestionScreenState extends State<QuestionScreen> {
+  int questionPosition = 0;
+  QuestionController questionController = QuestionController();
+  IncotermsController incotermController = IncotermsController();
+
+  @override
   Widget build(BuildContext context) {
+    List<Incoterm> possibleMatches = incotermController.incoterms;
+    Question currentQuestion = questionController.questions[questionPosition];
+
+    void update(bool answer) {
+      setState(() {
+        possibleMatches = incotermController.updatePossibleMatches(possibleMatches, questionPosition, answer);
+        if (possibleMatches.length == 1) {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => ResultScreen(incoterm: possibleMatches[0]),
+            ),
+          );
+        } else {
+          questionPosition = questionController.getNextQuestion(possibleMatches, questionPosition);
+        }
+      });
+    }
+
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
@@ -17,46 +51,51 @@ class QuestionScreen extends StatelessWidget {
             builder: (context) => const QuestionModal(),
           );
         },
-        backgroundColor: const Color.fromARGB(255, 1, 53, 101),
+        backgroundColor: const Color.fromARGB(255, 255, 217, 0),
         child: const Text(
           "?",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40, color: Colors.black),
         ),
       ),
-      body: Center(
+      body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Column(
               children: [
-                const Text(
-                  "Pergunta X de Y",
+                Text(
+                  "Incoterms candidatos: ${possibleMatches.length}",
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Container(
-                    decoration: const BoxDecoration(color: Colors.amber),
+                    decoration: BoxDecoration(
+                      color: Colors.amber,
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                     width: MediaQuery.of(context).size.width,
                     child: Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: const EdgeInsets.all(20.0),
                       child: Column(
-                        children: const [
+                        children: [
                           Text(
-                            "Modal",
-                            style: TextStyle(
+                            currentQuestion.description,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 40.0,
+                              fontSize: 30.0,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20.0,
                           ),
                           Text(
-                            "\"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam cursus quis magna at feugiat. Nulla enim justo, commodo in dui eget, consectetur mollis magna. Maecenas viverra semper risus nec facilisis. Vivamus justo urna, maximus porttitor facilisis nec, elementum eu ipsum. Aliquam a velit nisi. Quisque dignissim orci sed congue ultrices. Nullam interdum efficitur consequat. Vivamus non enim in metus iaculis cursus. Nulla vel lobortis quam. Cras at auctor massa. Sed rutrum vel risus nec luctus. In ullamcorper venenatis tellus, vel tincidunt augue mattis id. Mauris id velit a sapien aliquam fermentum.\"",
-                            style: TextStyle(
-                              fontSize: 20.0,
+                            currentQuestion.questionText,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 40.0,
                             ),
                           )
                         ],
@@ -69,12 +108,13 @@ class QuestionScreen extends StatelessWidget {
             Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 20.0, vertical: 10.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
                   child: SizedBox(
                     width: double.infinity,
                     child: TextButton(
-                      onPressed: null,
+                      onPressed: () {
+                        update(true);
+                      },
                       style: TextButton.styleFrom(
                         textStyle: const TextStyle(
                           fontSize: 40,
@@ -93,12 +133,13 @@ class QuestionScreen extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 20.0, vertical: 10.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
                   child: SizedBox(
                     width: double.infinity,
                     child: TextButton(
-                      onPressed: null,
+                      onPressed: () {
+                        update(false);
+                      },
                       style: TextButton.styleFrom(
                         textStyle: const TextStyle(
                           fontSize: 40,

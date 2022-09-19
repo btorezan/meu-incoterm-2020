@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:meuincoterm2020/models/incoterm.dart';
 
-class ResultScreen extends StatelessWidget {
-  const ResultScreen({Key? key}) : super(key: key);
+class ResultScreen extends StatefulWidget {
+  Incoterm incoterm;
 
+  ResultScreen({Key? key, required this.incoterm}) : super(key: key);
+
+  @override
+  State<ResultScreen> createState() => _ResultScreenState();
+}
+
+class _ResultScreenState extends State<ResultScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,28 +21,22 @@ class ResultScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           // ignore: prefer_const_literals_to_create_immutables
           children: [
-            const Text(
-              "PARABÉNS!\nSeu INCOTERM é",
+            Text(
+              "PARABÉNS!\nSeu INCOTERM é\n",
               textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: 40,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.amber),
+              style: const TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.amber),
             ),
-            const Text(
-              "FAS",
-              style: TextStyle(
+            Text(
+              widget.incoterm.abbreviation,
+              style: const TextStyle(
                 fontSize: 150,
                 fontWeight: FontWeight.bold,
                 color: Color.fromARGB(255, 1, 53, 101),
               ),
             ),
-            const Text(
-              "FREE ALONGSIDE SHIP",
-              style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.amber),
+            Text(
+              widget.incoterm.internationalName,
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.amber),
             ),
             // ignore: prefer_const_constructors
             SizedBox(
@@ -48,8 +50,8 @@ class ResultScreen extends StatelessWidget {
               // ignore: prefer_const_constructors
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: const Text(
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut sapien malesuada, malesuada justo nec, semper ligula. Donec maximus lorem sed vestibulum auctor. Vivamus ut sem sed turpis dapibus viverra vel at eros. Quisque aliquet turpis id finibus maximus. Pellentesque tristique efficitur ante ac porta. Sed sit amet mollis tortor. Curabitur ac tristique libero. Nunc sagittis ultricies varius. Fusce quis lorem a massa tincidunt faucibus at tempor nunc. Nam dictum scelerisque tellus, in aliquam ligula. Quisque ante turpis, posuere ac varius et, vehicula ut nisl. Quisque facilisis ligula ligula, nec ullamcorper mi ornare at. Etiam porttitor rutrum dolor eget bibendum. Maecenas non odio sapien. Duis consectetur efficitur enim, a ultricies justo tempor a. Aliquam vitae risus justo.",
+                child: Text(
+                  widget.incoterm.brazilianName,
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
               ),
@@ -78,7 +80,9 @@ class ResultScreen extends StatelessWidget {
                     ),
                   ),
                   TextButton(
-                    onPressed: null,
+                    onPressed: () {
+                      Navigator.popAndPushNamed(context, "/");
+                    },
                     style: TextButton.styleFrom(
                       textStyle: const TextStyle(fontSize: 20),
                       backgroundColor: const Color.fromARGB(255, 1, 53, 101),

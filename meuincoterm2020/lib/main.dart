@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meuincoterm2020/screens/about/about_screen.dart';
 import 'package:meuincoterm2020/screens/faq/faq_screen.dart';
 import 'package:meuincoterm2020/screens/question/question_screen.dart';
+import 'package:meuincoterm2020/screens/result/result.dart';
 import 'package:meuincoterm2020/screens/welcome/welcome_screen.dart';
 
 void main() {
