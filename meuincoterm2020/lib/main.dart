@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:meuincoterm2020/screens/about/about_screen.dart';
-import 'package:meuincoterm2020/screens/faq/faq_screen.dart';
+import 'package:meuincoterm2020/screens/about_incoterm/about_incoterm_screen.dart';
+import 'package:meuincoterm2020/screens/incoterms/incoterms_screen.dart';
+import 'package:meuincoterm2020/screens/info/info_screen.dart';
 import 'package:meuincoterm2020/screens/question/question_screen.dart';
-import 'package:meuincoterm2020/screens/result/result.dart';
 import 'package:meuincoterm2020/screens/welcome/welcome_screen.dart';
 
 void main() {
@@ -16,14 +17,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Meu Incoterm 2020',
       theme: ThemeData.light(),
       initialRoute: "/",
       routes: {
         "/": (context) => const WelcomeScreen(),
         "/question": (context) => const QuestionScreen(),
-        "/faq": (context) => const FAQScreen(),
+        "/info": (context) => const InfoScreen(incotermAbbr: ""),
         "/about": (context) => const AboutScreen(),
+        "/incoterms": (context) => const IncotermsScreen(),
+        "/aboutincoterm": (context) => const AboutIncontermScreen(),
       },
     );
   }

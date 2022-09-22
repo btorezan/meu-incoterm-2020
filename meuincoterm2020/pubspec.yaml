@@ -1,5 +1,5 @@
 name: meuincoterm2020
-description: A new Flutter project.
+description: Um app para ajudar a encontrar o melhor INCOTERM 2020.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -36,12 +36,15 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: ^4.6.5
   modal_bottom_sheet: ^2.1.2
+  change_app_package_name: ^1.1.0
 
   
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  
+  
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MainButton extends StatelessWidget {
-  const MainButton({Key? key, required this.text, required this.route})
-      : super(key: key);
+  const MainButton({Key? key, required this.text, required this.route}) : super(key: key);
   final String text;
   final String route;
 
@@ -10,17 +9,21 @@ class MainButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 50.0),
-      child: SizedBox(
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(30.0),
+        ),
         width: double.infinity,
+        height: 100,
         child: TextButton(
           style: TextButton.styleFrom(
             textStyle: const TextStyle(
-              fontSize: 20,
+              fontSize: 25,
               fontWeight: FontWeight.bold,
             ),
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(20.0),
             primary: Colors.white,
-            backgroundColor: const Color.fromARGB(255, 1, 53, 101),
+            backgroundColor: const Color(0xff001741),
           ),
           onPressed: () {
             Navigator.pushNamed(context, route);

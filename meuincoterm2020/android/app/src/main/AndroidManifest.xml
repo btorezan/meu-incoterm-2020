@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.meuincoterm2020">
+    package="br.torezan.meuincoterm2020">
    <application
-        android:label="meuincoterm2020"
+        android:label="Meu Incoterm 2020"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

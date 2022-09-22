@@ -1,6 +1,4 @@
-import 'package:meuincoterm2020/models/incoterm.dart';
-import 'dart:developer' as developer;
-
+import '../models/incoterm.dart';
 import '../models/question.dart';
 
 class QuestionController {

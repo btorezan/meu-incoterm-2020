@@ -14,8 +14,8 @@ class WelcomeScreen extends StatelessWidget {
           Column(
             mainAxisSize: MainAxisSize.max,
             children: const <Widget>[
-              MainButton(text: "Vamos Começar?", route: "/question"),
-              MainButton(text: "Sobre os INCOTERMs 2020", route: "/faq"),
+              MainButton(text: "Descubra seu Incoterm 2020", route: "/question"),
+              MainButton(text: "Sobre os INCOTERMs 2020", route: "/aboutincoterm"),
               MainButton(text: "Sobre nós", route: "/about"),
             ],
           ),

@@ -8,7 +8,6 @@ import 'package:meuincoterm2020/models/question.dart';
 import 'package:meuincoterm2020/screens/result/result.dart';
 import 'package:meuincoterm2020/widgets/question_modal.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'dart:developer' as developer;
 
 class QuestionScreen extends StatefulWidget {
   const QuestionScreen({Key? key}) : super(key: key);
@@ -21,6 +20,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
   int questionPosition = 0;
   QuestionController questionController = QuestionController();
   IncotermsController incotermController = IncotermsController();
+  final Color yellow = const Color(0xffffc600);
+  final Color blue = const Color(0xff001741);
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +32,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
       setState(() {
         possibleMatches = incotermController.updatePossibleMatches(possibleMatches, questionPosition, answer);
         if (possibleMatches.length == 1) {
+          Navigator.pop(context);
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -51,115 +53,101 @@ class _QuestionScreenState extends State<QuestionScreen> {
             builder: (context) => const QuestionModal(),
           );
         },
-        backgroundColor: const Color.fromARGB(255, 255, 217, 0),
+        backgroundColor: yellow,
         child: const Text(
           "?",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40, color: Colors.black),
         ),
       ),
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Column(
-              children: [
-                Text(
-                  "Incoterms candidatos: ${possibleMatches.length}",
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold),
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            children: [
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(20),
+                decoration: const BoxDecoration(color: Color(0xff001741)),
+                child: Text("${possibleMatches.length} INCOTERMs possíveis!",
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    )),
+              ),
+              Expanded(
+                flex: 3,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: yellow,
+                  ),
+                  margin: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(15.0),
+                  width: MediaQuery.of(context).size.width,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        currentQuestion.questionText,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(color: Color(0xff001741), fontSize: 40),
+                      ),
+                    ],
+                  ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.amber,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    width: MediaQuery.of(context).size.width,
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        children: [
-                          Text(
-                            currentQuestion.description,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30.0,
-                            ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Column(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+                      child: TextButton(
+                        onPressed: () => update(true),
+                        style: TextButton.styleFrom(
+                          textStyle: const TextStyle(
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
                           ),
-                          const SizedBox(
-                            height: 20.0,
+                          padding: const EdgeInsets.all(16.0),
+                          backgroundColor: const Color(0xff001741),
+                        ),
+                        child: const Text(
+                          "SIM",
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: double.infinity,
+                      margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+                      child: TextButton(
+                        onPressed: () => update(false),
+                        style: TextButton.styleFrom(
+                          textStyle: const TextStyle(
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
                           ),
-                          Text(
-                            currentQuestion.questionText,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontSize: 40.0,
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: TextButton(
-                      onPressed: () {
-                        update(true);
-                      },
-                      style: TextButton.styleFrom(
-                        textStyle: const TextStyle(
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
+                          padding: const EdgeInsets.all(16.0),
+                          backgroundColor: const Color(0xff001741),
                         ),
-                        padding: const EdgeInsets.all(16.0),
-                        backgroundColor: const Color.fromARGB(255, 1, 53, 101),
-                      ),
-                      child: const Text(
-                        "SIM",
-                        style: TextStyle(
-                          color: Colors.white,
+                        child: const Text(
+                          "NÃO",
+                          style: TextStyle(color: Colors.white),
                         ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: TextButton(
-                      onPressed: () {
-                        update(false);
-                      },
-                      style: TextButton.styleFrom(
-                        textStyle: const TextStyle(
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        padding: const EdgeInsets.all(16.0),
-                        backgroundColor: const Color.fromARGB(255, 1, 53, 101),
-                      ),
-                      child: const Text(
-                        "NÃO",
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
