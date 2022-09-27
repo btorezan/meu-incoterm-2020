@@ -37,6 +37,8 @@ dependencies:
   get: ^4.6.5
   modal_bottom_sheet: ^2.1.2
   change_app_package_name: ^1.1.0
+  flutter_native_splash: ^2.2.9
+  auto_size_text: ^3.0.0
 
   
 
@@ -95,3 +97,14 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+flutter_native_splash:
+
+  android: true
+  ios: true
+  web: false
+
+  #color: "#ffffff"
+  background_image: "assets/images/bg.png"
+  image: "assets/images/splash.png"
+

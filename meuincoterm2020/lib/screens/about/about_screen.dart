@@ -48,7 +48,7 @@ class AboutScreen extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                   Text(
-                    "Silvio Soares da Rosa\nCo-Orientador: Paula Rodrigues Granato",
+                    "Silvio Soares da Rosa\nPaula Rodrigues Granato",
                     style: text,
                     textAlign: TextAlign.center,
                   ),

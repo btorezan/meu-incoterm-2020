@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:meuincoterm2020/controllers/incoterms_controller.dart';
 import 'package:meuincoterm2020/controllers/question_controller.dart';
@@ -92,10 +93,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
                       const SizedBox(
                         height: 20,
                       ),
-                      Text(
+                      AutoSizeText(
                         currentQuestion.questionText,
                         textAlign: TextAlign.center,
                         style: const TextStyle(color: Color(0xff001741), fontSize: 40),
+                        maxLines: 8,
                       ),
                     ],
                   ),

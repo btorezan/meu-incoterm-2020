@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:meuincoterm2020/controllers/incoterms_controller.dart';
 import 'package:meuincoterm2020/models/incoterm.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class InfoScreen extends StatelessWidget {
   const InfoScreen({super.key, required this.incotermAbbr});
@@ -40,15 +41,18 @@ class InfoScreen extends StatelessWidget {
         child: Column(
           children: [
             Column(children: [
-              Text(
+              AutoSizeText(
+                maxLines: 1,
                 incoterm.abbreviation,
                 style: abbr,
               ),
-              Text(
+              AutoSizeText(
+                maxLines: 1,
                 incoterm.internationalName,
                 style: name,
               ),
-              Text(
+              AutoSizeText(
+                maxLines: 1,
                 incoterm.brazilianName,
                 style: name,
               ),

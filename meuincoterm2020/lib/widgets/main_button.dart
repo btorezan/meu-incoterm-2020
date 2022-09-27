@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class MainButton extends StatelessWidget {
   const MainButton({Key? key, required this.text, required this.route}) : super(key: key);
@@ -28,7 +29,10 @@ class MainButton extends StatelessWidget {
           onPressed: () {
             Navigator.pushNamed(context, route);
           },
-          child: Text(text),
+          child: AutoSizeText(
+            text,
+            maxLines: 1,
+          ),
         ),
       ),
     );

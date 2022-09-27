@@ -5,7 +5,7 @@ class QuestionController {
   final questions = <Question>[];
   QuestionController() {
     questions.add(Question('1ª Questão', 'O modal principal é exclusivamente marítimo?'));
-    questions.add(Question('2ª Questão', 'A responsabilidade aduaneira é do COMPRADOR/IMPORTADOR no país de trânsito?'));
+    questions.add(Question('2ª Questão', 'A responsabilidade aduaneira é do COMPRADOR/IMPORTADOR no país do IMPORTADOR?'));
     questions.add(Question('3º Questão', 'O transporte principal é pago pelo COMPRADOR/IMPORTADOR?'));
     questions.add(Question('4º Questão', 'o COMPRADOR/IMPORTADOR é responsável pelos riscos de transporte no país do VENDEDOR/EXPORTADOR?'));
     questions.add(Question('5º Questão', 'A mercadoria será entregue descarregada?'));

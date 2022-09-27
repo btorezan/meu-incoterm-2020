@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meuincoterm2020/models/incoterm.dart';
 import 'package:meuincoterm2020/screens/info/info_screen.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class ResultScreen extends StatefulWidget {
   final Incoterm incoterm;
@@ -47,8 +48,12 @@ class _ResultScreenState extends State<ResultScreen> {
                 ),
                 Column(
                   children: [
-                    Text(
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    AutoSizeText(
                       widget.incoterm.abbreviation,
+                      maxLines: 1,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         color: Color(0xffffc600),
@@ -126,7 +131,7 @@ class _ResultScreenState extends State<ResultScreen> {
                         padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 6.0),
                         child: TextButton(
                           onPressed: () {
-                            Navigator.popAndPushNamed(context, "/");
+                            Navigator.of(context).pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
                           },
                           style: TextButton.styleFrom(
                             backgroundColor: const Color(0xff001741),

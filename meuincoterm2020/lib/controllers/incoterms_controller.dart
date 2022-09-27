@@ -101,7 +101,7 @@ class IncotermsController {
         {},
         [
           false,
-          false,
+          true,
           false,
           false,
           false,
@@ -146,7 +146,7 @@ class IncotermsController {
         {},
         [
           false,
-          false,
+          true,
           false,
           false,
           true,
