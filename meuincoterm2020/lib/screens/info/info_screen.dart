@@ -14,7 +14,7 @@ class InfoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextStyle abbr = const TextStyle(color: Color(0xffffc600), fontSize: 120, fontWeight: FontWeight.bold);
-    TextStyle name = const TextStyle(color: Color(0xff001741), fontSize: 20, fontWeight: FontWeight.bold);
+    TextStyle name = const TextStyle(color: Color(0xff001741), fontSize: 30, fontWeight: FontWeight.bold);
 
     Incoterm incoterm = IncotermsController().getIncotermByAbbr(incotermAbbr);
     QuestionController qController = QuestionController();
@@ -65,31 +65,37 @@ class InfoScreen extends StatelessWidget {
               height: 20,
             ),
             SizedBox(
-              height: 300,
+              height: 200,
               child: Center(
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     padding: const EdgeInsets.all(8),
                     itemCount: incoterm.answers.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        height: 200,
+                      return SizedBox(
                         width: MediaQuery.of(context).size.width / 1.8,
                         child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          elevation: 5,
                           color: incoterm.answers[index] ? Colors.green[200] : Colors.red[200],
                           child: SizedBox(
-                            width: 300,
+                            width: 100,
                             height: 100,
                             child: Padding(
                               padding: const EdgeInsets.all(10),
                               child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
+                                  const SizedBox(
+                                    height: 15,
+                                  ),
                                   AutoSizeText(
                                     questions[index].questionText.toString(),
                                     style: const TextStyle(fontSize: 30),
                                     textAlign: TextAlign.center,
-                                    maxLines: 4,
+                                    maxLines: 3,
                                   ),
                                   const SizedBox(
                                     height: 15,
@@ -106,6 +112,12 @@ class InfoScreen extends StatelessWidget {
                       );
                     }),
               ),
+            ),
+            const Divider(
+              color: Color(0xffffc600),
+              thickness: 3,
+              indent: 20,
+              endIndent: 20,
             ),
             Expanded(
               child: SingleChildScrollView(
