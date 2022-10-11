@@ -15,20 +15,28 @@ class AboutIncontermScreen extends StatelessWidget {
       body: ListView.builder(
         itemCount: incoterms.length,
         itemBuilder: ((context, index) => Card(
-              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              child: ListTile(
-                title: Text(
-                  incoterms[index].abbreviation,
-                  style: const TextStyle(color: Color(0xff001741), fontSize: 30),
+              elevation: 4.0,
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: ListTile(
+                  leading: Text(incoterms[index].abbreviation, style: const TextStyle(color: Color(0xff001741), fontSize: 30, fontWeight: FontWeight.bold)),
+                  title: Text(
+                    incoterms[index].internationalName,
+                    style: const TextStyle(color: Color(0xff001741), fontSize: 20),
+                  ),
+                  subtitle: Text(
+                    incoterms[index].brazilianName,
+                    style: const TextStyle(color: Color(0xff001741)),
+                  ),
+                  trailing: const Icon(
+                    Icons.arrow_forward,
+                    color: Color(0xffffc600),
+                    size: 40,
+                  ),
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => InfoScreen(incotermAbbr: incoterms[index].abbreviation)));
+                  },
                 ),
-                subtitle: Text(
-                  incoterms[index].internationalName,
-                  style: const TextStyle(color: Color(0xff001741)),
-                ),
-                trailing: const Icon(Icons.arrow_forward),
-                onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => InfoScreen(incotermAbbr: incoterms[index].abbreviation)));
-                },
               ),
             )),
       ),

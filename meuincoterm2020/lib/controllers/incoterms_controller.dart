@@ -254,7 +254,7 @@ class IncotermsController {
           false
         ]));
     incoterms.add(Incoterm(
-        'EX WORKS',
+        'EXW',
         'EX WORKS',
         'NA FÁBRICA',
         'EXW é o Incoterm que implica menos obrigações, custos e riscos para o vendedor, que entrega as mercadorias ao comprador em suas próprias instalações. O vendedor nem carrega a mercadoria no meio de transporte (geralmente caminhão) enviado pelo comprador.\nÉ o único Incoterm em que o vendedor não realiza o despacho de exportação. Ester Incoterm é recomendado para empresas exportadoras com pouca experiência internacional e que realizam operações de Grupagem (caixas e paletes) de baixo volume em que o comprador envia um caminhão para buscar a mercadoria nas instalações do vendedor. \nEXW também pode ser usado em operações entre países de uma mesma área intracomunitária ( por exemplo, a União Europeia), Nesse caso, o vendedor deve obter um documento que justifique para efeitos fiscais a saída da mercadoria do território nacional. Este documento pode ser uma cópia do documento de transporte (CMR, B/L, SWB, AWB, FBL) ou a nota de entrega do transportador assinada pelo destinatário da mercadoria.',
