@@ -15,23 +15,41 @@ class _QuestionModalState extends State<QuestionModal> {
   Widget build(BuildContext context) {
     QuestionController questionController = QuestionController();
     List<Question> questions = questionController.questions;
+
+    final tips = questions[widget.index].tips.map((entry) {
+      return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        const SizedBox(
+          height: 20,
+        ),
+        Text(
+          entry.title,
+          style: const TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Color(0xff001741)),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        Text(
+          entry.text,
+          style: const TextStyle(
+            fontSize: 30,
+          ),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+      ]);
+    });
+
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.8,
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         // ignore: prefer_const_literals_to_create_immutables
-        child: Column(children: [
-          Text(
-            questions[0].tips[0].title.toString(),
-            style: const TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-          ),
-          Text(
-            questions[0].tips[0].text.toString(),
-            style: const TextStyle(
-              fontSize: 20,
-            ),
-          )
-        ]),
+        child: Column(
+          children: [
+            ...tips,
+          ],
+        ),
       ),
     );
   }

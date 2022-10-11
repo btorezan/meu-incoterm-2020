@@ -46,20 +46,28 @@ class _QuestionScreenState extends State<QuestionScreen> {
       });
     }
 
+    _getFAB() {
+      if (currentQuestion.tips.isNotEmpty) {
+        return FloatingActionButton(
+          onPressed: () async {
+            return showMaterialModalBottomSheet(
+              context: context,
+              builder: (context) => QuestionModal(index: questionPosition),
+            );
+          },
+          backgroundColor: yellow,
+          child: const Text(
+            "?",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40, color: Colors.black),
+          ),
+        );
+      } else {
+        return null;
+      }
+    }
+
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          return showMaterialModalBottomSheet(
-            context: context,
-            builder: (context) => const QuestionModal(index: 1),
-          );
-        },
-        backgroundColor: yellow,
-        child: const Text(
-          "?",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40, color: Colors.black),
-        ),
-      ),
+      floatingActionButton: _getFAB(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(15.0),
