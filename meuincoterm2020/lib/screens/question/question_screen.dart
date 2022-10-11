@@ -51,7 +51,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
         onPressed: () async {
           return showMaterialModalBottomSheet(
             context: context,
-            builder: (context) => const QuestionModal(),
+            builder: (context) => const QuestionModal(index: 1),
           );
         },
         backgroundColor: yellow,
