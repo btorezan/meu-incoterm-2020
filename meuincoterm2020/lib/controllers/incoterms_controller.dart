@@ -280,7 +280,7 @@ class IncotermsController {
           "REQUISITOS DE SEGURANÇA":
               "O vendedor é obrigado a fornecer ao comprador as informações sobre segurança, tanto no transporte da mercadoria, como no desembaraço aduaneiro de exportação, trânsito e importação.",
           "MEIOS DE PAGAMENTO":
-              "EXW é utilizado com meios de pagamento simples (transferência, ordem de pagamento, cheque, etc.). Quando o pagamento é feito a crédito documentário não é aconselhável usar EXW pois o vendedor não tem um documento de transporte (CMR, B/L, SWB, AWB, FBL) que justifique a entrega da mercadoria nas condições acordado e, portanto, pode ser incluído como documentação do crédito documentário. Quando os métodos de pagamento são usados documentos, é preferível utilizar outro Incoterms em grupo \“F\” ou em \“C\”.",
+              "EXW é utilizado com meios de pagamento simples (transferência, ordem de pagamento, cheque, etc.). Quando o pagamento é feito a crédito documentário não é aconselhável usar EXW pois o vendedor não tem um documento de transporte (CMR, B/L, SWB, AWB, FBL) que justifique a entrega da mercadoria nas condições acordado e, portanto, pode ser incluído como documentação do crédito documentário. Quando os métodos de pagamento são usados documentos, é preferível utilizar outro Incoterms em grupo “F” ou em “C”.",
           "OBRIGAÇÕES DO VENDEDOR":
               "O vendedor arca apenas com os custos de embalagem, verificação e marcação da mercadoria, de acordo com as práticas usuais no comércio exterior da referida mercadoria, bem como a qualquer requisito específico na embalagem estabelecido pelo comprador e que consta no contrato de venda.",
           "OBRIGAÇÕES DO COMPRADOR":
