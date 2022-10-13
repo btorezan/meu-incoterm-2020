@@ -12,6 +12,15 @@ class AboutIncontermScreen extends StatelessWidget {
     List<Incoterm> incoterms = controller.incoterms;
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          "Incoterm2020",
+          style: TextStyle(
+            fontSize: 30,
+          ),
+        ),
+        backgroundColor: const Color(0xff001741),
+      ),
       body: ListView.builder(
         itemCount: incoterms.length,
         itemBuilder: ((context, index) => Card(
