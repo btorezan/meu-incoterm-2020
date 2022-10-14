@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meuincoterm2020/screens/about/about_screen.dart';
 import 'package:meuincoterm2020/screens/about_incoterm/about_incoterm_screen.dart';
-import 'package:meuincoterm2020/screens/incoterms/incoterms_screen.dart';
 import 'package:meuincoterm2020/screens/info/info_screen.dart';
 import 'package:meuincoterm2020/screens/question/question_screen.dart';
 import 'package:meuincoterm2020/screens/welcome/welcome_screen.dart';
@@ -26,7 +25,6 @@ class MyApp extends StatelessWidget {
         "/question": (context) => const QuestionScreen(),
         "/info": (context) => const InfoScreen(incotermAbbr: ""),
         "/about": (context) => const AboutScreen(),
-        "/incoterms": (context) => const IncotermsScreen(),
         "/aboutincoterm": (context) => const AboutIncontermScreen(),
       },
     );
