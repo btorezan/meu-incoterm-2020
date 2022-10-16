@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:meuincoterm2020/controllers/question_controller.dart';
 
 import '../models/question.dart';
@@ -18,24 +19,24 @@ class _QuestionModalState extends State<QuestionModal> {
 
     final tips = questions[widget.index].tips.map((entry) {
       return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        const SizedBox(
-          height: 20,
+        SizedBox(
+          height: 20.sp,
         ),
         Text(
           entry.title,
-          style: const TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Color(0xff001741)),
+          style: TextStyle(fontSize: 25.sp, fontWeight: FontWeight.bold, color: Theme.of(context).primaryColor),
         ),
-        const SizedBox(
-          height: 10,
+        SizedBox(
+          height: 10.sp,
         ),
         Text(
           entry.text,
-          style: const TextStyle(
-            fontSize: 30,
+          style: TextStyle(
+            fontSize: 20.sp,
           ),
         ),
-        const SizedBox(
-          height: 20,
+        SizedBox(
+          height: 20.sp,
         ),
       ]);
     });
@@ -45,10 +46,12 @@ class _QuestionModalState extends State<QuestionModal> {
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         // ignore: prefer_const_literals_to_create_immutables
-        child: Column(
-          children: [
-            ...tips,
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              ...tips,
+            ],
+          ),
         ),
       ),
     );
