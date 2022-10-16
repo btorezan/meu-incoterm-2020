@@ -46,10 +46,12 @@ class _QuestionModalState extends State<QuestionModal> {
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         // ignore: prefer_const_literals_to_create_immutables
-        child: Column(
-          children: [
-            ...tips,
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              ...tips,
+            ],
+          ),
         ),
       ),
     );

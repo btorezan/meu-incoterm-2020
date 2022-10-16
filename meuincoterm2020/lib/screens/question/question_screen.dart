@@ -107,7 +107,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                         currentQuestion.questionText,
                         textAlign: TextAlign.center,
                         style: questionTextStyle,
-                        maxLines: 8,
+                        maxLines: 6,
                       ),
                     ],
                   ),
