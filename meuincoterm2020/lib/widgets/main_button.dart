@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MainButton extends StatelessWidget {
   const MainButton({Key? key, required this.text, required this.route}) : super(key: key);
@@ -15,23 +16,23 @@ class MainButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(30.0),
         ),
         width: double.infinity,
-        height: 100,
         child: TextButton(
           style: TextButton.styleFrom(
-            textStyle: const TextStyle(
-              fontSize: 25,
+            foregroundColor: Colors.white,
+            textStyle: TextStyle(
+              fontSize: 20.sp,
               fontWeight: FontWeight.bold,
             ),
             padding: const EdgeInsets.all(20.0),
-            primary: Colors.white,
-            backgroundColor: const Color(0xff001741),
+            backgroundColor: Theme.of(context).primaryColor,
           ),
           onPressed: () {
             Navigator.pushNamed(context, route);
           },
           child: AutoSizeText(
             text,
-            maxLines: 1,
+            textAlign: TextAlign.center,
+            maxLines: 2,
           ),
         ),
       ),

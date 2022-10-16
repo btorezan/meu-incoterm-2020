@@ -1,4 +1,6 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:meuincoterm2020/controllers/incoterms_controller.dart';
 import 'package:meuincoterm2020/models/incoterm.dart';
 import 'package:meuincoterm2020/screens/info/info_screen.dart';
@@ -15,11 +17,7 @@ class AboutIncontermScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           "Incoterm2020",
-          style: TextStyle(
-            fontSize: 30,
-          ),
         ),
-        backgroundColor: const Color(0xff001741),
       ),
       body: ListView.builder(
         itemCount: incoterms.length,
@@ -28,19 +26,34 @@ class AboutIncontermScreen extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: ListTile(
-                  leading: Text(incoterms[index].abbreviation, style: const TextStyle(color: Color(0xff001741), fontSize: 30, fontWeight: FontWeight.bold)),
-                  title: Text(
+                  leading: Text(
+                    incoterms[index].abbreviation,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Theme.of(context).primaryColor,
+                      fontSize: 30.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  title: AutoSizeText(
                     incoterms[index].internationalName,
-                    style: const TextStyle(color: Color(0xff001741), fontSize: 20),
+                    maxLines: 2,
+                    style: TextStyle(
+                      color: Theme.of(context).primaryColor,
+                      fontSize: 20.sp,
+                    ),
                   ),
-                  subtitle: Text(
+                  subtitle: AutoSizeText(
                     incoterms[index].brazilianName,
-                    style: const TextStyle(color: Color(0xff001741)),
+                    maxLines: 2,
+                    style: TextStyle(
+                      color: Theme.of(context).primaryColor,
+                    ),
                   ),
-                  trailing: const Icon(
+                  trailing: Icon(
                     Icons.arrow_forward,
-                    color: Color(0xffffc600),
-                    size: 40,
+                    color: Theme.of(context).colorScheme.secondary,
+                    size: 40.sp,
                   ),
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => InfoScreen(incotermAbbr: incoterms[index].abbreviation)));
