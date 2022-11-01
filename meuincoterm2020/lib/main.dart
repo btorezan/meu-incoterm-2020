@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:meuincoterm2020/screens/about/about_screen.dart';
 import 'package:meuincoterm2020/screens/about_incoterm/about_incoterm_screen.dart';
 import 'package:meuincoterm2020/screens/info/info_screen.dart';
@@ -15,18 +16,26 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Meu Incoterm 2020',
-      theme: ThemeData.light(),
-      initialRoute: "/",
-      routes: {
-        "/": (context) => const WelcomeScreen(),
-        "/question": (context) => const QuestionScreen(),
-        "/info": (context) => const InfoScreen(incotermAbbr: ""),
-        "/about": (context) => const AboutScreen(),
-        "/aboutincoterm": (context) => const AboutIncontermScreen(),
-      },
-    );
+    return ScreenUtilInit(builder: (context, child) {
+      return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Meu Incoterm 2020',
+        theme: ThemeData.light().copyWith(
+          primaryColor: const Color(0xff001741),
+          colorScheme: const ColorScheme.light(secondary: Color(0xffffc600)),
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Color(0xff001741),
+          ),
+        ),
+        initialRoute: "/",
+        routes: {
+          "/": (context) => const WelcomeScreen(),
+          "/question": (context) => const QuestionScreen(),
+          "/info": (context) => const InfoScreen(incotermAbbr: ""),
+          "/about": (context) => const AboutScreen(),
+          "/aboutincoterm": (context) => const AboutIncontermScreen(),
+        },
+      );
+    });
   }
 }

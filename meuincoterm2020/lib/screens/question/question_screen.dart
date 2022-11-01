@@ -2,6 +2,7 @@
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:meuincoterm2020/controllers/incoterms_controller.dart';
 import 'package:meuincoterm2020/controllers/question_controller.dart';
 import 'package:meuincoterm2020/models/incoterm.dart';
@@ -21,13 +22,16 @@ class _QuestionScreenState extends State<QuestionScreen> {
   int questionPosition = 0;
   QuestionController questionController = QuestionController();
   IncotermsController incotermController = IncotermsController();
-  final Color yellow = const Color(0xffffc600);
-  final Color blue = const Color(0xff001741);
 
   @override
   Widget build(BuildContext context) {
     List<Incoterm> possibleMatches = incotermController.incoterms;
     Question currentQuestion = questionController.questions[questionPosition];
+
+    //Styles
+    TextStyle fabStyle = TextStyle(fontWeight: FontWeight.bold, fontSize: 30.sp, color: Theme.of(context).primaryColor);
+    TextStyle questionTextStyle = TextStyle(color: Theme.of(context).primaryColor, fontSize: 30.sp);
+    TextStyle textButtonStyle = TextStyle(fontSize: 30.sp, fontWeight: FontWeight.bold);
 
     void update(bool answer) {
       setState(() {
@@ -55,10 +59,10 @@ class _QuestionScreenState extends State<QuestionScreen> {
               builder: (context) => QuestionModal(index: questionPosition),
             );
           },
-          backgroundColor: yellow,
-          child: const Text(
+          backgroundColor: Theme.of(context).colorScheme.secondary,
+          child: Text(
             "?",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40, color: Colors.black),
+            style: fabStyle,
           ),
         );
       } else {
@@ -70,91 +74,84 @@ class _QuestionScreenState extends State<QuestionScreen> {
       floatingActionButton: _getFAB(),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 30.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(20),
-                decoration: const BoxDecoration(color: Color(0xff001741)),
-                child: Text("${possibleMatches.length} INCOTERMs possíveis!",
+                decoration: BoxDecoration(color: Theme.of(context).primaryColor),
+                child: AutoSizeText("${possibleMatches.length} INCOTERMs possíveis!",
+                    maxLines: 1,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 25,
+                    style: TextStyle(
+                      fontSize: 25.sp,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     )),
               ),
               Expanded(
-                flex: 3,
                 child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: yellow,
-                  ),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Theme.of(context).colorScheme.secondary),
                   margin: const EdgeInsets.all(10.0),
                   padding: const EdgeInsets.all(15.0),
                   width: MediaQuery.of(context).size.width,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const SizedBox(
-                        height: 20,
+                      SizedBox(
+                        height: 20.sp,
                       ),
                       AutoSizeText(
                         currentQuestion.questionText,
                         textAlign: TextAlign.center,
-                        style: const TextStyle(color: Color(0xff001741), fontSize: 40),
-                        maxLines: 8,
+                        style: questionTextStyle,
+                        maxLines: 6,
                       ),
                     ],
                   ),
                 ),
               ),
-              Expanded(
-                flex: 1,
-                child: Column(
-                  children: [
-                    Container(
-                      width: double.infinity,
-                      margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
-                      child: TextButton(
-                        onPressed: () => update(true),
-                        style: TextButton.styleFrom(
-                          textStyle: const TextStyle(
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
+              Column(
+                children: [
+                  Column(
+                    children: [
+                      Container(
+                        width: double.infinity,
+                        margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+                        child: TextButton(
+                          onPressed: () => update(true),
+                          style: TextButton.styleFrom(
+                            textStyle: textButtonStyle,
+                            padding: const EdgeInsets.all(16.0),
+                            backgroundColor: Theme.of(context).primaryColor,
                           ),
-                          padding: const EdgeInsets.all(16.0),
-                          backgroundColor: const Color(0xff001741),
-                        ),
-                        child: const Text(
-                          "SIM",
-                          style: TextStyle(color: Colors.white),
+                          child: const Text(
+                            "SIM",
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ),
                       ),
-                    ),
-                    Container(
-                      width: double.infinity,
-                      margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
-                      child: TextButton(
-                        onPressed: () => update(false),
-                        style: TextButton.styleFrom(
-                          textStyle: const TextStyle(
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
+                      Container(
+                        width: double.infinity,
+                        margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+                        child: TextButton(
+                          onPressed: () => update(false),
+                          style: TextButton.styleFrom(
+                            textStyle: textButtonStyle,
+                            padding: const EdgeInsets.all(16.0),
+                            backgroundColor: Theme.of(context).primaryColor,
                           ),
-                          padding: const EdgeInsets.all(16.0),
-                          backgroundColor: const Color(0xff001741),
-                        ),
-                        child: const Text(
-                          "NÃO",
-                          style: TextStyle(color: Colors.white),
+                          child: const Text(
+                            "NÃO",
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  )
+                ],
               )
             ],
           ),
