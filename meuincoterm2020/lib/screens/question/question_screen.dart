@@ -50,7 +50,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
       });
     }
 
-    _getFAB() {
+    getFAB() {
       if (currentQuestion.tips.isNotEmpty) {
         return FloatingActionButton(
           onPressed: () async {
@@ -71,7 +71,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
     }
 
     return Scaffold(
-      floatingActionButton: _getFAB(),
+      floatingActionButton: getFAB(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 30.0),

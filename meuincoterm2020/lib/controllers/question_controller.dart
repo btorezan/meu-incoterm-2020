@@ -10,7 +10,7 @@ class QuestionController {
           "Modal de Transporte, como chamamos na área internacional, são os diversos meios de transporte de mercadorias que existem como rodoviário, ferroviário, hidroviário e aeroviário."),
       Tip("Transporte Principal", "Transporte principal é aquele utilizado para envio da mercadoria de um país para o outro."),
     ]));
-    questions.add(Question('2ª Questão', 'A responsabilidade aduaneira é do COMPRADOR/IMPORTADOR no país do IMPORTADOR?', [
+    questions.add(Question('2ª Questão', 'A responsabilidade aduaneira é do COMPRADOR/IMPORTADOR no país de TRANSITO?', [
       Tip("Responsabilidade Aduaneira", "Responsabilidade aduaneira é obter liberação aduaneira da carga importada ou exportada."),
       Tip("Aduana",
           "Aduana ou Alfândega é a repartição governamental responsável por controlar a entrada e saída de mercadorias para o exterior ou provenientes dele. Também é encarregada por cobrar os tributos incidentes destes produtos."),
