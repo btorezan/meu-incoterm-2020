@@ -18,7 +18,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     super.initState();
 
     interstitialAd = AdmobInterstitial(
-      adUnitId: "ca-app-pub-3940256099942544/1033173712",
+      adUnitId: "ca-app-pub-6404585807013241/9363526804",
       listener: null,
     );
     interstitialAd.load();
