@@ -18,24 +18,17 @@ class QuestionController {
     questions.add(Question('3º Questão', 'O transporte principal é pago pelo COMPRADOR/IMPORTADOR?', [
       Tip("Transporte Principal", "Transporte principal é aquele utilizado para envio da mercadoria de um país para o outro."),
     ]));
-    questions.add(Question('4º Questão', 'o COMPRADOR/IMPORTADOR é responsável pelos riscos de transporte no país do VENDEDOR/EXPORTADOR?', [
+    questions.add(Question('4º Questão', 'O COMPRADOR/IMPORTADOR é responsável pelos riscos de transporte no país do VENDEDOR/EXPORTADOR?', [
       Tip("Risco de Transporte", "Riscos de transporte podem ser perda ou roubo da mercadoria ou quaisquer outros danos causados no translado."),
     ]));
-    questions.add(Question('5º Questão', 'A mercadoria será entregue descarregada?', [Tip("Definição: Descarregada", "Fora do veículo de transporte")]));
-    questions.add(Question('6º Questão', 'O seguro é obrigatório?', []));
-    questions.add(Question('7º Questão', 'O VENDEDOR/EXPORTADOR paga pelo seguro?', []));
-    questions.add(Question('8º Questão', 'O COMPRADOR/IMPORTADOR receberá pelo seguro?', []));
-    questions.add(Question('9º Questão', 'A mercadoria será enviada por conteineres?', []));
-    questions.add(Question('10º Questão', 'O contrato de transporte e segurança da carga é de responsabilidade do COMPRADOR/IMPORTADOR?', []));
-    questions.add(Question('11º Questão', 'A entrega é feita no país do COMPRADOR/IMPORTADOR?', []));
-    questions.add(Question('12º Questão', 'A mercadoria é entregue pronta para ser descarregada no meio do transporte?', [
-      Tip("Definição: Descarregada", "Fora do veículo de transporte"),
-      Tip("Definição: \"no meio do transporte\"", "Dentro do Navio, Avião, Trem ou Caminhão."),
-    ]));
-    questions.add(Question('13º Questão', 'A mercadoria é descarregada do meio do transporte?', [
-      Tip("Definição: Descarregada", "Fora do veículo de transporte"),
-      Tip("Definição: \"no meio do transporte\"", "Dentro do Navio, Avião, Trem ou Caminhão."),
-    ]));
+    questions.add(Question('5º Questão', 'A é entregue carregada no meio do transporte?', [Tip("Definição: Carregada", "Dentro do veículo de transporte")]));
+    questions.add(Question('6º Questão', 'A mercadoria será entregue descarregada?', [Tip("Definição: Descarregada", "Fora do veículo de transporte")]));
+    questions.add(Question('7º Questão', 'O seguro é obrigatório?', []));
+    questions.add(Question('8º Questão', 'O VENDEDOR/EXPORTADOR paga pelo seguro?', []));
+    questions.add(Question('9º Questão', 'O COMPRADOR/IMPORTADOR receberá pelo seguro?', []));
+    questions.add(Question('10º Questão', 'A mercadoria será enviada por conteineres?', []));
+    questions.add(Question('11º Questão', 'O contrato de transporte e segurança da carga é de responsabilidade do COMPRADOR/IMPORTADOR?', []));
+    questions.add(Question('12º Questão', 'A entrega é feita no país do COMPRADOR/IMPORTADOR?', []));
     questions.add(Question('14º Questão', 'O COMPRADOR/IMPORTADOR é responsável pelo despacho no trânsito?', [
       Tip("Despacho no trânsito",
           "O Despacho de transito aduaneiro tem com base a Declaração de Trânsito Aduaneiro, constituindo-se em um procedimento fiscal especial"),
@@ -77,7 +70,7 @@ class QuestionController {
         'O COMPRADOR/IMPORTADOR fica com o transporte interno do terminal, porto, aeroporto, às instalações do COMPRADOR/IMPORTADOR, com transportador contratada ou própria?',
         []));
     questions.add(Question('23º Questão',
-        'O VENDEDOR/EXPORTADOR contata a transportadora do país de origem e o transporte internacional até o país do COMPRADOR/IMPORTADOR?', []));
+        'O VENDEDOR/EXPORTADOR contrata a transportadora do país de origem e o transporte internacional até o país do COMPRADOR/IMPORTADOR?', []));
     questions.add(Question('24º Questão', 'O COMPRADOR/IMPORTADOR assume os riscos no mesmo local onde a mercadoria é entregue?',
         [Tip("Risco de Transporte", "Riscos de transporte podem ser perda ou roubo da mercadoria ou quaisquer outros danos causados no translado.")]));
     questions.add(Question('25º Questão', 'O VENDEDOR/EXPORTADOR entrega dentro do país de destino?', []));
@@ -115,7 +108,7 @@ class QuestionController {
       Tip("Aduana",
           "Aduana ou Alfândega é a repartição governamental responsável por controlar a entrada e saída de mercadorias para o exterior ou provenientes dele. Também é encarregada por cobrar os tributos incidentes destes produtos."),
     ]));
-    questions.add(Question('35º Questão', 'A responsabilidade aduaneira é do COMPRADOR/IMPORTADOR no país do COMPRADOR/IMPORTADOR?', [
+    questions.add(Question('35º Questão', 'A responsabilidade aduaneira é do COMPRADOR/IMPORTADOR em seu país?', [
       Tip("Responsabilidade Aduaneira", "Responsabilidade aduaneira é obter liberação aduaneira da carga importada ou exportada."),
       Tip("Aduana",
           "Aduana ou Alfândega é a repartição governamental responsável por controlar a entrada e saída de mercadorias para o exterior ou provenientes dele. Também é encarregada por cobrar os tributos incidentes destes produtos."),
