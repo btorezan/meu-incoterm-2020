@@ -1,4 +1,3 @@
-import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:meuincoterm2020/screens/about/about_screen.dart';
@@ -9,7 +8,6 @@ import 'package:meuincoterm2020/screens/welcome/welcome_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  Admob.initialize();
   runApp(const MyApp());
 }
 
